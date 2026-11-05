@@ -320,3 +320,144 @@ def executar_vitoria_multiplayer(tela, vencedor_texto):
 
         pygame.display.flip()
         relogio.tick(FPS)
+
+def executar_instrucoes_solo(tela):
+    try:
+        imagem_fundo = pygame.image.load("assets/tetris-bg.png").convert()
+        imagem_fundo = pygame.transform.scale(imagem_fundo, (tela.get_width(), tela.get_height()))
+    except Exception:
+        imagem_fundo = None
+
+    try:
+        pygame.mixer.music.load("sounds/main-theme.mp3")
+        pygame.mixer.music.set_volume(0.5)
+        pygame.mixer.music.play(-1)
+    except Exception as e:
+        print(f"Erro ao carregar a música: {e}")
+
+    while True:
+        for evento in pygame.event.get():
+            if evento.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            elif evento.type == pygame.KEYDOWN:
+                if evento.key == pygame.K_RETURN:
+                    return "jogar"
+                elif evento.key == pygame.K_ESCAPE:
+                    pygame.mixer.music.stop()
+                    return "menu"
+
+        tela.fill((0, 0, 0))
+        if imagem_fundo:
+            tela.blit(imagem_fundo, (0, 0))
+
+        # Caixa no tamanho padrão ideal (igual à de vitória)
+        largura_caixa = 460
+        altura_caixa = 340
+        pos_x = (tela.get_width() - largura_caixa) // 2
+        pos_y = (tela.get_height() - altura_caixa) // 2
+
+        pygame.draw.rect(tela, (151, 184, 9), (pos_x, pos_y, largura_caixa, altura_caixa))
+        pygame.draw.rect(tela, (56, 98, 17), (pos_x, pos_y, largura_caixa, altura_caixa), 4)
+
+        txt_titulo = fonte_menu.render("COMO JOGAR", True, COR_TEXTO)
+        tela.blit(txt_titulo, (pos_x + (largura_caixa // 2 - txt_titulo.get_width() // 2), pos_y + 20))
+
+        # Usando a 'fonte' padrão (mesmo tamanho da tela de vitória)
+        regras = [
+            "SETA ESQ E DIR - MOVE A PECA",
+            "SETA DE BAIXO - ACELERA A QUEDA",
+            "SETA DE CIMA - ROTACIONA A PECA",
+            "ESPACO - PAUSA O JOGO",
+            "OBJETIVO - FACA 100 LINHAS",
+            "PARA VENCER",
+            "",
+            "PRESSIONE ENTER PARA COMECAR"
+        ]
+
+        espaco_y = pos_y + 75
+        for linha in regras:
+            txt_linha = fonte_pequena.render(linha, True, COR_TEXTO)
+            tela.blit(txt_linha, (pos_x + (largura_caixa - txt_linha.get_width()) // 2, espaco_y))
+            espaco_y += 34
+
+        pygame.display.flip()
+        relogio.tick(FPS)
+
+
+def executar_instrucoes_multi(tela):
+    try:
+        bg_mp = pygame.image.load("assets/tetris-bg.png").convert()
+        bg_mp = pygame.transform.scale(bg_mp, (554, 576))
+    except Exception:
+        bg_mp = None
+
+    try:
+        pygame.mixer.music.load("sounds/main-theme.mp3")
+        pygame.mixer.music.set_volume(0.5)
+        pygame.mixer.music.play(-1)
+    except Exception as e:
+        print(f"Erro ao carregar a música: {e}")
+
+    OFFSET_X_P1 = 50
+    OFFSET_X_P2 = 650
+    OFFSET_Y = 35
+
+    while True:
+        for evento in pygame.event.get():
+            if evento.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            elif evento.type == pygame.KEYDOWN:
+                if evento.key == pygame.K_RETURN:
+                    return "jogar"
+                elif evento.key == pygame.K_ESCAPE:
+                    pygame.mixer.music.stop()
+                    return "menu"
+
+        # Desenha o cenário de fundo real do multiplayer (idêntico ao jogo e à tela de vitória)
+        tela.fill((0, 0, 0))
+
+        if bg_mp:
+            tela.blit(bg_mp, (OFFSET_X_P1 - 42, OFFSET_Y))
+            tela.blit(bg_mp, (OFFSET_X_P2 - 42, OFFSET_Y))
+
+        txt_p1_titulo = fonte_menu.render("JOGADOR 1", True, (151, 184, 9))
+        txt_p2_titulo = fonte_menu.render("JOGADOR 2", True, (151, 184, 9))
+        tela.blit(txt_p1_titulo, (OFFSET_X_P1 + 45, OFFSET_Y - 30))
+        tela.blit(txt_p2_titulo, (OFFSET_X_P2 + 45, OFFSET_Y - 30))
+
+        # Desenha a caixa de instruções por cima do cenário do jogo
+        largura_caixa = 560
+        altura_caixa = 420
+        pos_x = (tela.get_width() - largura_caixa) // 2
+        pos_y = (tela.get_height() - altura_caixa) // 2
+
+        pygame.draw.rect(tela, (151, 184, 9), (pos_x, pos_y, largura_caixa, altura_caixa))
+        pygame.draw.rect(tela, (56, 98, 17), (pos_x, pos_y, largura_caixa, altura_caixa), 4)
+
+        txt_titulo = fonte_menu.render("COMO JOGAR", True, COR_TEXTO)
+        tela.blit(txt_titulo, (pos_x + (largura_caixa // 2 - txt_titulo.get_width() // 2), pos_y + 20))
+
+        regras = [
+            "JOGADOR 1:",
+            "TECLAS A E D - MOVE A PECA",
+            "TECLA S - ACELERA A QUEDA",
+            "TECLA W - ROTACIONA A PECA",
+            "JOGADOR 2:",
+            "SETA ESQ E DIR - MOVE A PECA",
+            "SETA DE BAIXO - ACELERA A QUEDA",
+            "SETA DE CIMA - ROTACIONA A PECA",
+            "OBJETIVO - FACA 50 LINHAS PARA VENCER",
+            "",
+            "PRESSIONE ENTER PARA COMECAR"
+        ]
+
+        espaco_y = pos_y + 70
+        for linha in regras:
+            txt_linha = fonte_pequena.render(linha, True, COR_TEXTO)
+            tela.blit(txt_linha, (pos_x + (largura_caixa - txt_linha.get_width()) // 2, espaco_y))
+            espaco_y += 31
+
+        pygame.display.flip()
+        relogio.tick(FPS)
