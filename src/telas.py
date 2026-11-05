@@ -100,7 +100,7 @@ def executar_pause(tela):
         pygame.draw.rect(tela, (151, 184, 9), (pos_x, pos_y, largura_caixa, altura_caixa))
         pygame.draw.rect(tela, (56, 98, 17), (pos_x, pos_y, largura_caixa, altura_caixa), 4)
 
-        txt_titulo = fonte_menu.render("PAUSADO", True, COR_TEXTO)
+        txt_titulo = fonte_menu.render("PAUSE", True, COR_TEXTO)
         render_cont = fonte_pequena.render("CONTINUAR", True, COR_TEXTO)
         render_menu = fonte_pequena.render("VOLTAR AO MENU", True, COR_TEXTO)
 
@@ -228,7 +228,7 @@ def executar_vitoria(tela):
         pygame.draw.rect(tela, (151, 184, 9), (pos_x, pos_y, largura_caixa, altura_caixa))
         pygame.draw.rect(tela, (56, 98, 17), (pos_x, pos_y, largura_caixa, altura_caixa), 4)
 
-        txt_titulo = fonte_menu.render("VENCEU!", True, COR_TEXTO)
+        txt_titulo = fonte_menu.render("VOCE VENCEU!", True, COR_TEXTO)
         render_novamente = fonte_pequena.render("JOGAR DE NOVO", True, COR_TEXTO)
         render_menu = fonte_pequena.render("VOLTAR AO MENU", True, COR_TEXTO)
 
