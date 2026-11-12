@@ -10,9 +10,9 @@ Certifique-se de que tem o Python instalado na sua máquina. Você também vai p
 
 1. Clone o repositório ou baixe os arquivos do projeto.
 2. Instale o Pygame executando o seguinte comando no seu terminal:
-   ```bash
-   pip install pygame
-   ```
+```bash
+pip install pygame
+```
 
 ### Executando o Jogo
 Navegue até a pasta raiz do projeto e execute o arquivo principal (`main.py`):
@@ -20,10 +20,25 @@ Navegue até a pasta raiz do projeto e execute o arquivo principal (`main.py`):
 python main.py
 ```
 
+## Demonstração do Jogo
+
+### Single‑Player
+<video width="50%" controls>
+  <source src="assets/video/1-player.mp4" type="video/mp4">
+  Seu navegador não suporta a tag de vídeo.
+</video>
+
+### Multiplayer
+<video width="50%" controls>
+  <source src="assets/video/2-player.mp4" type="video/mp4">
+  Seu navegador não suporta a tag de vídeo.
+</video>
+
 ## Estrutura do Projeto
 ```
 coding-tetris-pygame/
-├── assets/                                 # Recursos visuais (imagens, ícones) do jogo
+├── assets/                                 # Recursos visuais (imagens, ícones, videos) do jogo
+    ├── video/                              # Vídeos de demonstração do jogo
 ├── fonts/                                  # Fontes personalizadas utilizadas no jogo
 ├── sounds/                                 # Efeitos sonoros e músicas do jogo
 ├── src/                                    # Pasta principal contendo os módulos do código
