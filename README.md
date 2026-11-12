@@ -22,23 +22,13 @@ python main.py
 
 ## Demonstração do Jogo
 
-### Single‑Player
-<video width="50%" controls>
-  <source src="assets/video/1-player.mp4" type="video/mp4">
-  Seu navegador não suporta a tag de vídeo.
-</video>
-
-### Multiplayer
-<video width="50%" controls>
-  <source src="assets/video/2-player.mp4" type="video/mp4">
-  Seu navegador não suporta a tag de vídeo.
-</video>
+* [▶️ Assistir Gameplay - Modo Single-Player](https://drive.google.com/file/d/1lLjySwsyTEhVJRO7Nu5etefKyqkoTlWY/view?usp=sharing)
+* [▶️ Assistir Gameplay - Modo Multiplayer](https://drive.google.com/file/d/1cu-pvPRH_K1jKBvFwuETASOI7CxCeMAz/view?usp=sharing)
 
 ## Estrutura do Projeto
 ```
 coding-tetris-pygame/
 ├── assets/                                 # Recursos visuais (imagens, ícones, videos) do jogo
-    ├── video/                              # Vídeos de demonstração do jogo
 ├── fonts/                                  # Fontes personalizadas utilizadas no jogo
 ├── sounds/                                 # Efeitos sonoros e músicas do jogo
 ├── src/                                    # Pasta principal contendo os módulos do código
